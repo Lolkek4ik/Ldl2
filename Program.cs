@@ -65,20 +65,20 @@ namespace Ldl2
                 string input = Console.ReadLine();
                 if (input.StartsWith("q")) { goto end; }
                 if (input.StartsWith("b")) { break; }
-                if (input.StartsWith("ns/")) {/*=======CREATE STUDENT FUNCTION=======*/}
-                if (input.StartsWith("gs/")) {/*=======GRADUATE STUDENT FUNCTION=======*/}
-                if (input.StartsWith("ds"))  {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
-                if (input.StartsWith("dg/")) {/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
-                if (input.StartsWith("bf/")) {/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
+                if (input.StartsWith("ns/")){/*=======CREATE STUDENT FUNCTION=======*/}
+                if (input.StartsWith("gs/")){/*=======GRADUATE STUDENT FUNCTION=======*/}
+                if (input.StartsWith("ds")) {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
+                if (input.StartsWith("dg/")){/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
+                if (input.StartsWith("bf/")){/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
             }
 
 
             goto start;
         std:;
             Console.Clear();
+            Console.WriteLine("NUI НИХУЯ SCRIS IN FAILUL CU LUCRARE. НЕ ЕБЁТ!!");
 
-
-        goto start;
+            goto start;
         end:;
         Console.WriteLine("Ending the Program...");
         }
