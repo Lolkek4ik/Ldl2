@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
+﻿
 namespace Ldl2
 {
     internal class Program
@@ -51,9 +50,30 @@ namespace Ldl2
         goto start;
         fct:;
             Console.Clear();
+            Console.WriteLine("General opperations");
+            Console.WriteLine("What do you want to do?\n");
+            Console.WriteLine(" ns/<faculty abbreviation>/<first name>/<last name>/<email>/<day>/<month>/<year> - create student");
+            Console.WriteLine(" gs/<email> - (g)raduate (s)tudent");
+            Console.WriteLine(" ds/<faculty abbreviation> - (d)isplay enrolled (s)tudents");
+            Console.WriteLine(" dg/<faculty abbreviation> - (d)ispaly (g)raduated students");
+            Console.WriteLine(" bf/<faculty abbreviation>/<email> - check if student (b)elong to (f)aculty\n\n");
+            Console.WriteLine(" b - Back\n");
+            Console.WriteLine(" q - Quit Program\n\n");
+            Console.Write("your input> ");
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input.StartsWith("q")) { goto end; }
+                if (input.StartsWith("b")) { break; }
+                if (input.StartsWith("ns/")) {/*=======CREATE STUDENT FUNCTION=======*/}
+                if (input.StartsWith("gs/")) {/*=======GRADUATE STUDENT FUNCTION=======*/}
+                if (input.StartsWith("ds"))  {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
+                if (input.StartsWith("dg/")) {/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
+                if (input.StartsWith("bf/")) {/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
+            }
 
 
-        goto start;
+            goto start;
         std:;
             Console.Clear();
 
