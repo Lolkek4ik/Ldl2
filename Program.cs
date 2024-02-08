@@ -1,8 +1,10 @@
-﻿
+﻿using System;
+
 namespace Ldl2
 {
     internal class Program
     {
+        static Faculty faculty = new Faculty("", "", "");
         static void Main()
         {
         start:;
@@ -15,14 +17,21 @@ namespace Ldl2
             Console.WriteLine(" s - Student opperations\n\n");
             Console.WriteLine(" q - Quit Program\n\n");
             Console.Write("your input> ");
-            char act1 = Convert.ToChar(Console.Read());
 
-            switch(act1) 
-            { 
+            string userInput = Console.ReadLine();
+            if (string.IsNullOrEmpty(userInput))
+            {
+                goto start;
+            }
+
+            char act1 = userInput[0];
+
+            switch (act1)
+            {
                 case 'g': goto grl;
                 case 'f': goto fct;
                 case 's': goto std;
-                case 'q':goto end;
+                case 'q': goto end;
             }
 
         grl:;
@@ -36,21 +45,21 @@ namespace Ldl2
             Console.WriteLine(" b - Back\n");
             Console.WriteLine(" q - Quit Program\n\n");
             Console.Write("your input> ");
-            while (true) 
-            { 
+            while (true)
+            {
                 string input = Console.ReadLine();
-                if (input.StartsWith("q")){ goto end; }
-                if (input.StartsWith("b")){ break; }
-                if (input.StartsWith("nf/")) {/*=======NEW FACULTY FUNCTION=======*/}
-                if (input.StartsWith("ss/")) {/*=======SEARCH STUDENT FUNCTION=======*/}
-                if (input.StartsWith("df")) {/*=======DISPLAY FACULTIES FUNCTION=======*/}
-                if (input.StartsWith("df/")) {/*=======DISPLAY FACULTIES OF A FIELD FUNCTION=======*/}  
+                if (input.StartsWith("q")) { goto end; }
+                else if (input.StartsWith("b")) { goto start; }
+                else if (input.StartsWith("nf/")) { faculty.nf(input); Console.ReadLine(); goto grl; }
+                else if (input.StartsWith("ss/")) {/*=======SEARCH STUDENT FUNCTION=======*/}
+                else if (input.StartsWith("df")) {/*=======DISPLAY FACULTIES FUNCTION=======*/}
+                else if (input.StartsWith("df/")) {/*=======DISPLAY FACULTIES OF A FIELD FUNCTION=======*/}
+                else { Console.WriteLine($"Operation {input} is not a valid operation"); Console.ReadLine(); goto grl; }
             }
 
-        goto start;
         fct:;
             Console.Clear();
-            Console.WriteLine("General opperations");
+            Console.WriteLine("Faculty opperations");
             Console.WriteLine("What do you want to do?\n");
             Console.WriteLine(" ns/<faculty abbreviation>/<first name>/<last name>/<email>/<day>/<month>/<year> - create student");
             Console.WriteLine(" gs/<email> - (g)raduate (s)tudent");
@@ -64,23 +73,23 @@ namespace Ldl2
             {
                 string input = Console.ReadLine();
                 if (input.StartsWith("q")) { goto end; }
-                if (input.StartsWith("b")) { break; }
-                if (input.StartsWith("ns/")){/*=======CREATE STUDENT FUNCTION=======*/}
-                if (input.StartsWith("gs/")){/*=======GRADUATE STUDENT FUNCTION=======*/}
-                if (input.StartsWith("ds")) {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
-                if (input.StartsWith("dg/")){/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
-                if (input.StartsWith("bf/")){/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
+                else if (input.StartsWith("b")) { goto start; }
+                else if (input.StartsWith("ns/")) {/*=======CREATE STUDENT FUNCTION=======*/}
+                else if (input.StartsWith("gs/")) {/*=======GRADUATE STUDENT FUNCTION=======*/}
+                else if (input.StartsWith("ds")) {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
+                else if (input.StartsWith("dg/")) {/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
+                else if (input.StartsWith("bf/")) {/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
+                else { Console.WriteLine($"Operation {input} is not a valid operation"); }
             }
 
 
-            goto start;
         std:;
             Console.Clear();
             Console.WriteLine("NUI НИХУЯ SCRIS IN FAILUL CU LUCRARE. НЕ ЕБЁТ!!");
-
             goto start;
+
         end:;
-        Console.WriteLine("Ending the Program...");
+            Console.WriteLine("Ending the Program...");
         }
     }
 }
