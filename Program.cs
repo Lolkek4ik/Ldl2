@@ -51,9 +51,9 @@ namespace Ldl2
                 if (input.StartsWith("q")) { goto end; }
                 else if (input.StartsWith("b")) { goto start; }
                 else if (input.StartsWith("nf/")) { faculty.nf(input); Console.ReadLine(); goto grl; }
-                else if (input.StartsWith("ss/")) {/*=======SEARCH STUDENT FUNCTION=======*/}
-                else if (input.StartsWith("df")) {/*=======DISPLAY FACULTIES FUNCTION=======*/}
-                else if (input.StartsWith("df/")) {/*=======DISPLAY FACULTIES OF A FIELD FUNCTION=======*/}
+                else if (input.StartsWith("ss/")) { faculty.ss(input); Console.ReadLine(); goto grl; }
+                else if (input.StartsWith("df"))  { faculty.df(); Console.ReadLine(); goto grl; }
+                else if (input.StartsWith("df/")) { faculty.df(input); Console.ReadLine(); goto grl; }
                 else { Console.WriteLine($"Operation {input} is not a valid operation"); Console.ReadLine(); goto grl; }
             }
 
@@ -61,7 +61,7 @@ namespace Ldl2
             Console.Clear();
             Console.WriteLine("Faculty opperations");
             Console.WriteLine("What do you want to do?\n");
-            Console.WriteLine(" ns/<faculty abbreviation>/<first name>/<last name>/<email>/<day>/<month>/<year> - create student");
+            Console.WriteLine(" ns/<faculty abbreviation>/<first name>/<last name>/<email>/<day>/<month>/<year> - create student"); //DA NAHUI ATUNCI NE TREBU DateOfBirth/EnrollmentDate IN CLASSA STUDENT, DACA IN MOMENTUL CREARII UNUI STUDENT NOU, NOI NU AVEM NEVOIE DE UNA DIN ACESTE DOUA, A ?
             Console.WriteLine(" gs/<email> - (g)raduate (s)tudent");
             Console.WriteLine(" ds/<faculty abbreviation> - (d)isplay enrolled (s)tudents");
             Console.WriteLine(" dg/<faculty abbreviation> - (d)ispaly (g)raduated students");
@@ -74,12 +74,12 @@ namespace Ldl2
                 string input = Console.ReadLine();
                 if (input.StartsWith("q")) { goto end; }
                 else if (input.StartsWith("b")) { goto start; }
-                else if (input.StartsWith("ns/")) {/*=======CREATE STUDENT FUNCTION=======*/}
-                else if (input.StartsWith("gs/")) {/*=======GRADUATE STUDENT FUNCTION=======*/}
-                else if (input.StartsWith("ds")) {/*=======DISPLAY ENROLLED STUDENTS FUNCTION=======*/}
-                else if (input.StartsWith("dg/")) {/*=======DISPLAY GRADUATED STUDENTS FUNCTION=======*/}
-                else if (input.StartsWith("bf/")) {/*=======IF STUDENT BELONG TO FACULTY FUNCTION=======*/}
-                else { Console.WriteLine($"Operation {input} is not a valid operation"); }
+                else if (input.StartsWith("ns/")) { faculty.ns(input); Console.ReadLine(); goto fct; }
+                else if (input.StartsWith("gs/")) { faculty.gs(input); Console.ReadLine(); goto fct; }
+                else if (input.StartsWith("ds/")) { faculty.ds(input); Console.ReadLine(); goto fct; }
+                else if (input.StartsWith("dg/")) { faculty.dg(input); Console.ReadLine(); goto fct; }
+                else if (input.StartsWith("bf/")) { faculty.bf(input); Console.ReadLine(); goto fct; }
+                else { Console.WriteLine($"Operation {input} is not a valid operation"); Console.ReadLine(); goto fct; }
             }
 
 
