@@ -5,8 +5,12 @@ namespace Ldl2
     internal class Program
     {
         static Faculty faculty = new Faculty("", "", "");
+        
+
         static void Main()
         {
+
+            Faculty.LoadData("data.txt");
         start:;
             Console.Clear();
             Console.WriteLine("                    ``                          ");
@@ -47,13 +51,13 @@ namespace Ldl2
             Console.Write("your input> ");
             while (true)
             {
-                string input = Console.ReadLine();
-                if (input.StartsWith("q")) { goto end; }
-                else if (input.StartsWith("b")) { goto start; }
-                else if (input.StartsWith("nf/")) { faculty.nf(input); Console.ReadLine(); goto grl; }
+                string input = Console.ReadLine();                
+                if (input.StartsWith("nf/")) { faculty.nf(input); Console.ReadLine(); goto grl; }
                 else if (input.StartsWith("ss/")) { faculty.ss(input); Console.ReadLine(); goto grl; }
-                else if (input.StartsWith("df"))  { faculty.df(); Console.ReadLine(); goto grl; }
                 else if (input.StartsWith("df/")) { faculty.df(input); Console.ReadLine(); goto grl; }
+                else if (input.StartsWith("df")) { faculty.df(); Console.ReadLine(); goto grl; }
+                else if (input.StartsWith("b")) { goto start; }
+                else if (input.StartsWith("q")) { goto end; }
                 else { Console.WriteLine($"Operation {input} is not a valid operation"); Console.ReadLine(); goto grl; }
             }
 
@@ -72,24 +76,26 @@ namespace Ldl2
             while (true)
             {
                 string input = Console.ReadLine();
-                if (input.StartsWith("q")) { goto end; }
-                else if (input.StartsWith("b")) { goto start; }
-                else if (input.StartsWith("ns/")) { faculty.ns(input); Console.ReadLine(); goto fct; }
+                if (input.StartsWith("ns/")) { faculty.ns(input); Console.ReadLine(); goto fct; }
                 else if (input.StartsWith("gs/")) { faculty.gs(input); Console.ReadLine(); goto fct; }
                 else if (input.StartsWith("ds/")) { faculty.ds(input); Console.ReadLine(); goto fct; }
                 else if (input.StartsWith("dg/")) { faculty.dg(input); Console.ReadLine(); goto fct; }
                 else if (input.StartsWith("bf/")) { faculty.bf(input); Console.ReadLine(); goto fct; }
+                else if (input.StartsWith("b")) { goto start; }
+                else if (input.StartsWith("q")) { goto end; }
                 else { Console.WriteLine($"Operation {input} is not a valid operation"); Console.ReadLine(); goto fct; }
             }
 
-
+            
         std:;
             Console.Clear();
             Console.WriteLine("NUI НИХУЯ SCRIS IN FAILUL CU LUCRARE. НЕ ЕБЁТ!!");
-            goto start;
+            Console.ReadLine(); goto start;
 
         end:;
             Console.WriteLine("Ending the Program...");
+            Faculty.SaveData("data.txt");
+
         }
     }
 }
